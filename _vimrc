@@ -1,10 +1,13 @@
 set nocompatible
 
+let g:my_WindowsSystem_HP_8470p = 0
+let g:my_WindowsSystem_HP_Spectre = 1
+
 " For OS Environment Detection
 if(has("win32") || has("win95") || has("win64") || has("win16"))
     "let g:vimrc_iswindows=1
     let g:iswindows=1
-	"In Windows, $VIMRUNTIME = C:\tc\Vim\vim80
+	"In Windows, $VIMRUNTIME = C:\Program Files (x86)\Vim\vim80
 	source $VIMRUNTIME/vimrc_example.vim
 	source $VIMRUNTIME/mswin.vim
 	behave mswin
@@ -20,9 +23,11 @@ filetype off								"required!
 if(g:iswindows==1)
     if(g:useVundle==1)
 	    " set the runtime path to include Vundle and initialize
-        set rtp+=c:/tc/vim/vimfiles/bundle/Vundle.vim
+		"In Windows, $VIM = C:\Program Files (x86)\Vim
+        set rtp+=$VIM/vimfiles/bundle/Vundle.vim
 		" let Vundle manage Vundle, required
-        call vundle#begin('c:/tc/vim/vimfiles/bundle/')
+        call vundle#begin('$VIM/vimfiles/bundle/')
+		
         Plugin 'gmarik/vundle'
         Plugin 'kien/ctrlp.vim'
         Plugin 'vim-scripts/nerdtree-execute'
@@ -39,7 +44,8 @@ else
     " For Linux
     " let Vundle manage Vundle, required
     set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin('c:/tc/vim/vimfiles/bundle/')
+    "call vundle#begin()
+	call vundle#rc()
     Plugin 'gmarik/vundle'
     Plugin 'kien/ctrlp.vim'
     Plugin 'vim-scripts/nerdtree-execute'
@@ -48,6 +54,7 @@ else
     Plugin 'vim-scripts/Trinity'
     "Plugin 'vim-scripts/TagHighlight'		"this fails to work over Windows
     Plugin 'abudden/taghighlight-automirror'
+	Plugin 'kagovez/myVim'
     call vundle#end()						"required!
     filetype plugin indent on 				"required!
 endif
@@ -73,8 +80,6 @@ syntax on
 "set omnifunc=syntaxcomplete#Complete
 "set nocp  
 "filetype plugin on
-
-
 
 
 " Function MyDiff()
@@ -283,16 +288,25 @@ nmap <F11> :TrinityToggleNERDTree
 
 " For taglist
 if(g:iswindows==1)
-"let Tlist_Ctags_Cmd = 'C:\mytools\ctags58\ctags.exe'
-"let Tlist_Ctags_Cmd = 'C:\tc\ForVim\ctags.exe'
-let Tlist_Ctags_Cmd = 'C:\ctags58\ctags.exe'
+    if (g:my_WindowsSystem_HP_Spectre == 1)
+        let Tlist_Ctags_Cmd = 'C:\tc\ForVim\ctags.exe'
+	endif
+
+    if (g:my_WindowsSystem_HP_8470p == 1)
+        let Tlist_Ctags_Cmd = 'C:\ctags58\ctags.exe'
+	endif
 endif
 
 
 " For GNUGrep
 if(g:iswindows==1)
-":let Grep_Path = 'C:\mytools\GnuWin32\bin\grep.exe'
-:let Grep_Path = 'C:\tc\BuildTools_2-9-20170629-1013\bin\bin\busybox\grep.exe'
+    if (g:my_WindowsSystem_HP_Spectre == 1)
+        let Grep_Path = 'C:\GnuWin32\bin\grep.exe'
+	endif
+
+    if (g:my_WindowsSystem_HP_8470p == 1)
+        let Grep_Path = 'C:\tc\BuildTools_2-9-20170629-1013\bin\bin\busybox\grep.exe'
+	endif
 endif
 
 
