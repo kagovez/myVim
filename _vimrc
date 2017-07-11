@@ -1,13 +1,13 @@
 set nocompatible
-source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
-
 
 " For OS Environment Detection
 if(has("win32") || has("win95") || has("win64") || has("win16"))
     "let g:vimrc_iswindows=1
     let g:iswindows=1
+	"In Windows, $VIMRUNTIME = C:\tc\Vim\vim80
+	source $VIMRUNTIME/vimrc_example.vim
+	source $VIMRUNTIME/mswin.vim
+	behave mswin
 else
     "let g:vimrc_iswindows=0
     let g:iswindows=0
@@ -16,7 +16,7 @@ endif
 
 " For Vundle
 let g:useVundle=1
-filetype off					"required!
+filetype off								"required!
 if(g:iswindows==1)
     if(g:useVundle==1)
 	    " set the runtime path to include Vundle and initialize
@@ -31,8 +31,8 @@ if(g:iswindows==1)
         Plugin 'vim-scripts/Trinity'
         "Plugin 'vim-scripts/TagHighlight'		"this fails to work over Windows
         Plugin 'abudden/taghighlight-automirror'
-	Plugin 'kagovez/myVim'
-        call vundle#end()				"required!
+		Plugin 'kagovez/myVim'
+        call vundle#end()					"required!
         filetype plugin indent on 			"required!
     endif
 else
@@ -48,8 +48,8 @@ else
     Plugin 'vim-scripts/Trinity'
     "Plugin 'vim-scripts/TagHighlight'		"this fails to work over Windows
     Plugin 'abudden/taghighlight-automirror'
-    call vundle#end()				"required!
-    filetype plugin indent on 			"required!
+    call vundle#end()						"required!
+    filetype plugin indent on 				"required!
 endif
 
 
@@ -110,7 +110,7 @@ let g:ctrlp_root_markers = ['ctrlp.root']
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 set wildignore+=*.o,*.ewp,*.ewd,*.ewt,*.dep  " IAR
-set wildignore+=*.ioc			     " CUBEMX
+set wildignore+=*.ioc			     		" CUBEMX
 
 
 " For Ctags F12
