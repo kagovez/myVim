@@ -31,6 +31,7 @@ if(g:iswindows==1)
         Plugin 'vim-scripts/Trinity'
         "Plugin 'vim-scripts/TagHighlight'		"this fails to work over Windows
         Plugin 'abudden/taghighlight-automirror'
+	Plugin 'kagovez/myVim'
         call vundle#end()				"required!
         filetype plugin indent on 			"required!
     endif
