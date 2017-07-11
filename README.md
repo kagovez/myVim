@@ -5,20 +5,20 @@
 - The following features are enabled:
 
 	- ctrlp
-	![](ForREADME\ctrlp.png)
+		![](ForREADME/ctrlp.png)
     - Press F8 to enable TrinityToggleAll
-        ![](ForREADME\F8.png)
+        ![](ForREADME/F8.png)
     - Press F9 to enable TagList (TrinigyToggleTagList)
-        ![](ForREADME\F9.png) 
+        ![](ForREADME/F9.png) 
     - Press F10 to enable SourceExplorer (TrinigyToggleSourceExplorer)
-        ![](ForREADME\F10.png)
+        ![](ForREADME/F10.png)
     - Press F11 to enable NERDTree (TrinigyToggleNERDTree)
-        ![](ForREADME\F11.png)
+        ![](ForREADME/F11.png)
     - Press F12 to call Do_Cstag
-        ![](ForREADME\F12-1.png)
-        ![](ForREADME\F12-2.png)
+        ![](ForREADME/F12-1.png)
+        ![](ForREADME/F12-2.png)
     - Type :UpdateTypesFile in EX mode:
-        ![](ForREADME\UpdateTypesFile-2.png)
+        ![](ForREADME/UpdateTypesFile-2.png)
 
 - Vundle is installed in the following path:
 	- $VIM/vimfiles/bundle/Vundle.vim
