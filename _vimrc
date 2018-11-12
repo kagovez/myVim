@@ -1,15 +1,22 @@
+" vimrc location in Windows: C:\Program Files (x86)\Vim\vim80
+" vimrc location in Ubuntu/RPi/WSL: /usr/share/vim
 set nocompatible
 
+let g:my_WindowsSystem_HP_840_G5 = 1
 let g:my_WindowsSystem_HP_8470p = 0
-let g:my_WindowsSystem_HP_Spectre = 1
+let g:my_WindowsSystem_HP_Spectre = 0
+let g:my_WindowsSystem_LENOVO_YOGA_910 = 0
 
+" For larger fond in HP_840_G5 (either for Win10 or WSL)
+set guifont=Consolas:h11
 " For OS Environment Detection
 if(has("win32") || has("win95") || has("win64") || has("win16"))
     "let g:vimrc_iswindows=1
     let g:iswindows=1
 	"In Windows, $VIMRUNTIME = C:\Program Files (x86)\Vim\vim80
 	source $VIMRUNTIME/vimrc_example.vim
-	source $VIMRUNTIME/mswin.vim
+	source $VIMRUNTIME/mswin_v74.vim
+	"NOTE: Need to use mswin.vim of Vim74 in order to make "CTRL-F (Next Page)" work properlly
 	behave mswin
 else
     "let g:vimrc_iswindows=0
@@ -36,7 +43,7 @@ if(g:iswindows==1)
         Plugin 'vim-scripts/Trinity'
         "Plugin 'vim-scripts/TagHighlight'		"this fails to work over Windows
         Plugin 'abudden/taghighlight-automirror'
-		Plugin 'kagovez/myVim'
+	
         call vundle#end()					"required!
         filetype plugin indent on 			"required!
     endif
@@ -44,8 +51,7 @@ else
     " For Linux
     " let Vundle manage Vundle, required
     set rtp+=~/.vim/bundle/Vundle.vim
-    "call vundle#begin()
-	call vundle#rc()
+    call vundle#begin()
     Plugin 'gmarik/vundle'
     Plugin 'kien/ctrlp.vim'
     Plugin 'vim-scripts/nerdtree-execute'
@@ -54,7 +60,6 @@ else
     Plugin 'vim-scripts/Trinity'
     "Plugin 'vim-scripts/TagHighlight'		"this fails to work over Windows
     Plugin 'abudden/taghighlight-automirror'
-	Plugin 'kagovez/myVim'
     call vundle#end()						"required!
     filetype plugin indent on 				"required!
 endif
@@ -66,7 +71,8 @@ colorscheme apprentice
 "colorscheme Tomorrow-Night-Eighties
 
 set cursorline "底線 目前游標位置
-set nu	"Display Line Number
+" set nu		"Display Line Number
+set relativenumber	"Use relative line number
 set hlsearch
 set incsearch
 set showcmd
@@ -295,8 +301,15 @@ if(g:iswindows==1)
     if (g:my_WindowsSystem_HP_8470p == 1)
         let Tlist_Ctags_Cmd = 'C:\ctags58\ctags.exe'
 	endif
+    if (g:my_WindowsSystem_HP_840_G5 == 1)
+        let Tlist_Ctags_Cmd = 'C:\00_myTools\ctags58\ctags.exe'
 endif
 
+    if (g:my_WindowsSystem_LENOVO_YOGA_910 == 1)
+        let Tlist_Ctags_Cmd = 'C:\Users\ethan\mytoolchains\vim\ctags58\ctags.exe'
+	"This path also needs to be added into Windows environment variable PATH
+	endif
+endif
 
 " For GNUGrep
 if(g:iswindows==1)
@@ -306,6 +319,12 @@ if(g:iswindows==1)
 
     if (g:my_WindowsSystem_HP_8470p == 1)
         let Grep_Path = 'C:\tc\BuildTools_2-9-20170629-1013\bin\bin\busybox\grep.exe'
+	endif
+    if (g:my_WindowsSystem_HP_840_G5 == 1)
+        let Grep_Path = 'C:\00_myTools\Busybox\grep.exe'
+	endif
+    if (g:my_WindowsSystem_LENOVO_YOGA_910 == 1)
+        let Grep_Path = 'C:\Users\ethan\mytoolchains\vim\busybox\grep.exe'
 	endif
 endif
 
