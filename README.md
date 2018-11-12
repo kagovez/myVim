@@ -1,6 +1,13 @@
-- This repository contains vimrc (_vimrc) as well as color theme (colors\).
+- This repository contains vimrc (_vimrc), color theme (colors\) and mswin_v74.vim which is used for CTRL+F (next page) feature since this feature doesn't work properly with mswin.vim provided by Vin80/Vim81.
 
-- vimrc is tested over Win7-64/HP-8470p, Win10-64/HP-Spectre and Linux-raspberrypi-4.1.13-v7+/RPi2. 
+- This vimrc is tested over the following platforms:
+	- ~~Win7-64/HP-8470p~~
+	- ~~Win10-64/HP-Spectre~~
+	- Win10-Enterprise-64/HP-EliteBook-840-G5
+	- WSL/HP-EliteBook-840-G5
+	- Win10-Home-64/Lenovo-Yoga-910
+	- WSL/Lenovo-Yoga-910
+	- (TBC) Linux-raspberrypi-4.1.13-v7+/RPi2. 
 
 - The following features are enabled:
 
